@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+main {
+  padding: 20px;
+}
+
+.book-list {
+  list-style: none;
+  padding: 0;
+}
+
+.book-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.book-details {
+  flex: 1;
+}
+
+.book-details h2 {
+  margin-top: 0;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/add-book">Add a new book</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>BOOKS READ BY MAITHRI</h1>
+    <p>Hellooo! I am Maithri. I am very much interested in reading books and to know about new things.</p>
+  </header>
+  <main>
+    <ul class="book-list">
+      <% books.forEach(book => { %>
+        <li class="book-item">
+          <% if (book.coverUrl) { %>
+            <img src="<%= book.coverUrl %>" alt="Cover of <%= book.title %>" class="book-cover">
+          <% } else { %>
+            <p>No cover available</p>
+          <% } %>
+          <div class="book-details">
+            <h2><%= book.title %></h2>
+            <p><strong>Author:</strong> <%= book.author %></p>
+            <p><strong>Your Opinion:</strong> <%= book.summary %></p>
+            <p><strong>How much you rate the Book:</strong> <%= book.rating %></p>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+</body>
+</html>
